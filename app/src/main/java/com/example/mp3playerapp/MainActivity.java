@@ -135,9 +135,12 @@ public class MainActivity extends AppCompatActivity {
                 {
                     MediaMetadataRetriever retriever = new MediaMetadataRetriever();
                     retriever.setDataSource(this, uri);
-                    String name=retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_TITLE);
-                    songName.add(name);
-                    arrayAdapter.notifyDataSetChanged();
+                    String name = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_TITLE);
+                    if (!songName.contains(name))
+                    {
+                        songName.add(name);
+                        arrayAdapter.notifyDataSetChanged();
+                    }
                 }
             }
             else if (data.getData() != null) {
